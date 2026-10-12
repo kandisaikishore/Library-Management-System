@@ -1,11 +1,11 @@
 # Library Management System — Java OOP
 
-A small Java project demonstrating object-oriented programming through library workflows such as book and member management, issuing, and returning books.
+A small Java project demonstrating object-oriented programming through book and member management, issuing, and returning books.
 
 ## Features
 
 - Add books and library users
-- Manage book details and issue status
+- Track book details and issue status
 - Issue and return books
 - Organize responsibilities across model and library classes
 - Practise abstraction, encapsulation, inheritance, and polymorphism
@@ -17,10 +17,7 @@ A small Java project demonstrating object-oriented programming through library w
 
 ## Run locally
 
-1. Install a JDK.
-2. Clone the repository.
-3. Open the project in your Java IDE or terminal.
-4. Compile the source files and run the `Main` entry point. For a simple default-package project:
+Install a JDK and clone the repository:
 
 ```bash
 git clone https://github.com/saikishore2410/Library-Management-System.git
@@ -29,24 +26,16 @@ javac *.java
 java Main
 ```
 
-Adjust the command if the project uses packages or a build tool.
+This example assumes default-package Java files and `Main` as the entry point. Adjust for the package structure or build tool used by the source.
 
-## Project scope
+## Scope and extensions
 
-This is an educational project. Review the current implementation before assuming persistence, authentication, concurrency handling, or production-ready circulation rules.
+Review the current implementation before assuming persistence, authentication, concurrency handling, or production circulation rules. Potential extensions include SQL storage, title/author/ISBN search, due dates, overdue tracking, input validation, and unit tests.
 
-## Ideas to extend
+## Contributions
 
-- Persistent storage with SQL
-- Search by title, author, or ISBN
-- Due dates, overdue tracking, and fine calculation
-- Input validation and unit tests
-- Reports for available and issued books
-
-## Contributing
-
-Issues and focused pull requests are welcome. Include reproduction steps for bugs and tests for behavioural changes.
+Issues and focused pull requests are welcome. Include clear reproduction steps and relevant tests.
 
 ## License
 
-No license is specified. Add a `LICENSE` file to define permitted reuse.
+No license is specified. Add a `LICENSE` file to define reuse terms.
