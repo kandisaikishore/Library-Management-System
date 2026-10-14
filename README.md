@@ -1,59 +1,53 @@
 # Library Management System — Java OOP
 
-## Live Demo / Deployment URL
+[![Java](https://img.shields.io/badge/Java-OOP-orange?logo=openjdk)](https://www.java.com/) [![Repository](https://img.shields.io/badge/GitHub-Source-181717?logo=github)](https://github.com/kandisaikishore/Library-Management-System) [![Last Commit](https://img.shields.io/github/last-commit/kandisaikishore/Library-Management-System)](https://github.com/kandisaikishore/Library-Management-System/commits/main)
 
-**Deployment URL:** Not verified yet. Add the confirmed public application URL here after checking the live service. This repository's GitHub URL is the source code, not a deployed application.
+A learning-oriented Java application that models library operations such as tracking books and members, and issuing and returning books. It is intended to demonstrate object-oriented programming in a small, understandable codebase.
 
+## Capabilities
 
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?logo=github)](https://github.com/saikishore2410/Library-Management-System) [![Issues](https://img.shields.io/github/issues/saikishore2410/Library-Management-System)](https://github.com/saikishore2410/Library-Management-System/issues) [![Last Commit](https://img.shields.io/github/last-commit/saikishore2410/Library-Management-System)](https://github.com/saikishore2410/Library-Management-System/commits/main)
+- Represent book and library data with Java classes
+- Track book availability and lending actions where implemented
+- Add and manage library records
+- Practise encapsulation, abstraction, and class relationships
+- Explore a simple command-line workflow
 
-> A small Java project demonstrating object-oriented programming through book and member management, issuing, and returning books.
+## Tech stack
 
-## At a glance
-
-- **Purpose:** Use the feature and scope sections below to understand the problem this project addresses.
-- **Getting started:** Follow the repository-specific setup instructions and verify commands against the current source and package scripts.
-- **Configuration:** Keep API keys, database credentials, tokens, and private user data out of commits; configure secrets locally.
-- **Quality checks:** Run the available build, test, and lint commands before submitting changes.
-
-
-
-A small Java project demonstrating object-oriented programming through book and member management, issuing, and returning books.
-
-## Features
-
-- Add books and library users
-- Track book details and issue status
-- Issue and return books
-- Organize responsibilities across model and library classes
-- Practise abstraction, encapsulation, inheritance, and polymorphism
-
-## Technology
-
-- Java
+- Java / JDK
 - Object-oriented programming
+
+## Prerequisites
+
+Install a JDK and ensure the `java` and `javac` commands are available.
 
 ## Run locally
 
-Install a JDK and clone the repository:
-
 ```bash
-git clone https://github.com/saikishore2410/Library-Management-System.git
+git clone https://github.com/kandisaikishore/Library-Management-System.git
 cd Library-Management-System
 javac *.java
 java Main
 ```
 
-This example assumes default-package Java files and `Main` as the entry point. Adjust for the package structure or build tool used by the source.
+The command assumes default-package source files and a `Main` class. If the entry point or package layout differs, use the corresponding class name and compile from the appropriate source directory.
 
-## Scope and extensions
+## Current scope
 
-Review the current implementation before assuming persistence, authentication, concurrency handling, or production circulation rules. Potential extensions include SQL storage, title/author/ISBN search, due dates, overdue tracking, input validation, and unit tests.
+Review the implementation before assuming that data persists across runs or that authentication, multi-user concurrency, or production library policies are implemented. The repository is best treated as an educational project unless those behaviours are explicitly built and tested.
 
-## Contributions
+## Potential enhancements
 
-Issues and focused pull requests are welcome. Include clear reproduction steps and relevant tests.
+- Store records in MySQL or another database
+- Search by title, author, or ISBN
+- Track issue dates, due dates, and overdue books
+- Validate input and prevent duplicate identifiers
+- Add unit tests for issue/return edge cases
+
+## Contributing
+
+Please include concise reproduction steps and relevant tests with bug reports or pull requests.
 
 ## License
 
-No license is specified. Add a `LICENSE` file to define reuse terms.
+No license file is currently declared. Add a `LICENSE` file to define reuse terms.
