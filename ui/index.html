@@ -45,7 +45,7 @@ const starter=[
 const storeKey="leafline-library-ui-v1";
 let books=load();let history=[];
 function load(){try{const parsed=JSON.parse(localStorage.getItem(storeKey));return Array.isArray(parsed)&&parsed.every(b=>b&&typeof b.title==="string"&&typeof b.author==="string"&&["available","out"].includes(b.status))?parsed:starter.slice()}catch{return starter.slice()}}
-function save(){try{localStorage.setItem(storeKey,JSON.stringify(books))}catch{notify("Browser storage is unavailable; your changes may not persist.")}}
+function save(){try{localStorage.setItem(storeKey,JSON.stringify(books))}catch{notify("Browser storage is unavailable; your changes may not persist.")}fetch('/api/books/sync',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(books)}).catch(()=>notify('API unavailable. Start the Spring Boot API to sync changes.'))}
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function notify(msg){const n=document.getElementById("toast");n.textContent=msg;n.style.display="block";clearTimeout(notify.timer);notify.timer=setTimeout(()=>n.style.display="none",2600)}
 function log(text){history.unshift({text,when:new Date().toLocaleTimeString([], {hour:"2-digit",minute:"2-digit"})});history=history.slice(0,5);renderActivity()}
@@ -70,7 +70,7 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
 document.getElementById("search").addEventListener("input",render);document.getElementById("filter").addEventListener("change",render);
 document.getElementById("books").addEventListener("click",e=>{const btn=e.target.closest("button[data-action]");if(!btn)return;const id=Number(btn.dataset.id),book=books.find(b=>b.id===id);if(!book)return;if(btn.dataset.action==="toggle"){book.status=book.status==="out"?"available":"out";save();log((book.status==="out"?"Checked out ":"Marked available: ")+book.title);notify(book.title+" updated.");render()}else if(btn.dataset.action==="remove"){books=books.filter(b=>b.id!==id);save();log("Removed "+book.title);render();notify("Book removed.")}});
 document.getElementById("bookForm").addEventListener("submit",e=>{e.preventDefault();const title=document.getElementById("title").value.trim(),author=document.getElementById("author").value.trim(),status=document.getElementById("status").value;if(!title||!author)return;if(books.some(b=>b.title.toLowerCase()===title.toLowerCase()&&b.author.toLowerCase()===author.toLowerCase())){notify("That title and author are already in the collection.");return}books.unshift({id:Date.now(),title,author,status,tone:["green","blue","rose"][books.length%3],icon:["✿","◇","⌘","☼","✧","◈"][books.length%6]});save();log("Added "+title);closeModal();render();notify("Book added to the collection.")});
-render();renderActivity();
+render();renderActivity();fetch('/api/books').then(r=>{if(!r.ok)throw new Error('API '+r.status);return r.json()}).then(data=>{if(Array.isArray(data)){books=data.map((b,i)=>({...b,tone:['green','blue','rose'][i%3],icon:['✿','◇','⌘','☼','✧','◈'][i%6]}));render();}}).catch(()=>notify('Using local demo data. Start API with: cd api && mvn spring-boot:run'));
 })();
 </script>
 </body></html>
