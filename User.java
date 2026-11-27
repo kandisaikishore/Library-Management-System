@@ -17,7 +17,13 @@ public class User {
     public String getName() { return name; }
 
     public void issueBook(Book book) {
-        issuedBooks.add(book);
+        if (book != null && !issuedBooks.contains(book)) {
+            issuedBooks.add(book);
+        }
+    }
+
+    public boolean hasIssuedBook(Book book) {
+        return issuedBooks.contains(book);
     }
 
     public void returnBook(Book book) {
