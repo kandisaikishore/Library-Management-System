@@ -31,9 +31,10 @@ public class Library {
         Book book = findBook(bookId);
         User user = findUser(userId);
 
-        if (book != null && user != null && book.isIssued()) {
-            book.setIssued(false);
+        // Only the member who borrowed this book may return it.
+        if (book != null && user != null && book.isIssued() && user.hasIssuedBook(book)) {
             user.returnBook(book);
+            book.setIssued(false);
             System.out.println("Book returned successfully!");
         } else {
             System.out.println("Return failed.");
